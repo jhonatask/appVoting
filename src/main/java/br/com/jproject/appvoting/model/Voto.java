@@ -17,11 +17,11 @@ public class Voto {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "usuario_id", insertable = false, updatable = false)
     private Usuario usuario;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idPauta")
+    @JoinColumn(name = "id", insertable = false, updatable = false)
     private Pauta pauta;
 
     private String voto;
