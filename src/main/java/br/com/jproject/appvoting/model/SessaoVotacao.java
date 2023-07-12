@@ -20,7 +20,7 @@ public class SessaoVotacao {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pauta_id")
+    @JoinColumn(name = "id")
     private Pauta pauta;
 
     @Column(name = "data_abertura")

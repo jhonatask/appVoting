@@ -11,4 +11,5 @@ public class UsuarioDTO {
     public Long usuario_id;
     public String cpf;
     public String nome;
+
 }

@@ -31,4 +31,6 @@ public class Pauta {
     private LocalDateTime dataEncerramento;
     @Column(nullable = false)
     private String status;
+
+
 }

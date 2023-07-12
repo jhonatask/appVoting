@@ -5,6 +5,8 @@ import br.com.jproject.appvoting.dto.VotoDTO;
 import br.com.jproject.appvoting.model.Pauta;
 import br.com.jproject.appvoting.model.ResultadoVotacao;
 import br.com.jproject.appvoting.services.PautaService;
+import br.com.jproject.appvoting.services.SessaoVotacaoService;
+import br.com.jproject.appvoting.services.VotoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,25 +28,6 @@ public class PautaController {
         public ResponseEntity<PautaDTO> cadastrarPauta(@RequestBody PautaDTO pauta) {
             PautaDTO pautaCadastrada = pautaService.cadastrarPauta(pauta);
             return ResponseEntity.status(HttpStatus.CREATED).body(pautaCadastrada);
-        }
-
-        @PostMapping("/{idPauta}/sessoes")
-        public ResponseEntity<String> abrirSessaoVotacao(@PathVariable Long idPauta,
-                                                         @RequestParam("duracao") Integer duracaoMinutos) {
-            pautaService.abrirSessaoVotacao(idPauta, duracaoMinutos);
-            return ResponseEntity.status(HttpStatus.CREATED).body("Sessão de votação aberta com sucess");
-        }
-
-        @PostMapping("/{idPauta}/votos")
-        public ResponseEntity<VotoDTO> receberVoto(@PathVariable Long idPauta, @RequestBody VotoDTO voto) {
-            VotoDTO resultado = pautaService.votar(voto);
-            return ResponseEntity.status(HttpStatus.CREATED).body(resultado);
-        }
-
-        @GetMapping("/{idPauta}/resultado")
-        public ResponseEntity<ResultadoVotacao> obterResultadoVotacao(@PathVariable Long idPauta) {
-            ResultadoVotacao resultado = pautaService.obterResultadoVotacao(idPauta);
-            return ResponseEntity.ok(resultado);
         }
 
         @GetMapping
